@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2351308815465704676}
   - component: {fileID: 439941101883214558}
   - component: {fileID: 5453114927944962060}
+  - component: {fileID: 7094661712222338637}
+  - component: {fileID: 1935908801313831970}
   m_Layer: 0
   m_Name: ComputerDesk_feet_snaps001
   m_TagString: Untagged
@@ -3492,6 +3494,32 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
+--- !u!65 &7094661712222338637
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373927078019527944}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.09682059, y: 0.047470555, z: 0.6875}
+  m_Center: {x: -0.8265897, y: 0.023735277, z: 0.015625}
+--- !u!65 &1935908801313831970
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373927078019527944}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.095840454, y: 0.031450734, z: 0.6875}
+  m_Center: {x: 0.8270798, y: 0.015725367, z: 0.015625}
 --- !u!1 &3464816336649956524
 GameObject:
   m_ObjectHideFlags: 0
@@ -3502,6 +3530,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5572775791015886118}
   - component: {fileID: 2491654256900352632}
+  - component: {fileID: 1578877252198590263}
   m_Layer: 0
   m_Name: ComputerDesk
   m_TagString: Untagged
@@ -3536,6 +3565,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9111511ea44ee6e459e890ece27f6f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bottom: {fileID: 0}
+  legs: {fileID: 0}
+  top: {fileID: 0}
+  up: 0
+  down: 0
+--- !u!65 &1578877252198590263
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3464816336649956524}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7584398, y: 0.073539495, z: 0.89521027}
+  m_Center: {x: 0.7529975, y: 0.62175095, z: 0.76699066}
 --- !u!1 &4642274412061849494
 GameObject:
   m_ObjectHideFlags: 0
@@ -3549,6 +3596,8 @@ GameObject:
   - component: {fileID: 8252819993403428348}
   - component: {fileID: 7309153567643432503}
   - component: {fileID: 8439805818872280984}
+  - component: {fileID: 830990858164826914}
+  - component: {fileID: 1728870042120486165}
   m_Layer: 0
   m_Name: ComputerDesk_extendableLegs_snaps
   m_TagString: Untagged
@@ -4349,11 +4398,37 @@ MeshCollider:
   m_GameObject: {fileID: 4642274412061849494}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
+--- !u!65 &830990858164826914
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4642274412061849494}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0681231, y: 0.66995597, z: 0.074605465}
+  m_Center: {x: -0.8313662, y: 0.41502202, z: 0.015625}
+--- !u!65 &1728870042120486165
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4642274412061849494}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.074557066, y: 0.6759465, z: 0.074605465}
+  m_Center: {x: 0.8281492, y: 0.41202676, z: 0.015625}
 --- !u!1 &7563588550131529737
 GameObject:
   m_ObjectHideFlags: 0
