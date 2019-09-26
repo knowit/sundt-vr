@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Sundt_pb.unity
     guid: 7b8fdca1671327d498fbaa33d0fe7ed4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Oculus/SampleFramework/Usage/AvatarGrab.unity
     guid: 941c413af7c367d40aab0725f5a59530
   m_configObjects: {}
