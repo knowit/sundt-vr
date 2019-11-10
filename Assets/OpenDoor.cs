@@ -6,8 +6,7 @@ using UnityEngine;
 public class OpenDoor : MonoBehaviour
 {
     [SerializeField] private Animator doorAnimationController;
-    private static readonly int DoClose = Animator.StringToHash("DoClose");
-    private static readonly int DoOpen = Animator.StringToHash("DoOpen");
+    private static readonly int AnimateDoor = Animator.StringToHash("AnimateDoor");
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +23,12 @@ public class OpenDoor : MonoBehaviour
     {
         if (other.enabled)
         {
-            var isOpen = doorAnimationController.GetCurrentAnimatorStateInfo(0).IsName("Open");
-            doorAnimationController.SetTrigger(isOpen ? DoClose : DoOpen);
+            doorAnimationController.SetTrigger(AnimateDoor);
         }
+    }
+
+    private void OnMouseDown()
+    {
+        doorAnimationController.SetTrigger(AnimateDoor);
     }
 }
