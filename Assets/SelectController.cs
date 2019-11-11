@@ -8,7 +8,6 @@ public class SelectController : MonoBehaviour
     [SerializeField] private GameObject ovrPlayerController;
     [SerializeField] private GameObject fpsController;
     
-    // Start is called before the first frame update
     private void Awake()
     {
         if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
