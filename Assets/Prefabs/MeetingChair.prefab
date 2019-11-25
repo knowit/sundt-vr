@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8636199821369541188}
   - component: {fileID: 8636199821369541189}
   - component: {fileID: 8636199821369541190}
+  - component: {fileID: 794986087468291462}
   m_Layer: 0
   m_Name: MeetingChair
   m_TagString: Untagged
@@ -15380,3 +15381,19 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
+--- !u!208 &794986087468291462
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8636199821369541191}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.377, y: 0.55700004, z: 0.377}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.551, z: 0.039}
+  m_TimeToStationary: 0.5
