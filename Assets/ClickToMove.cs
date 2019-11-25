@@ -22,10 +22,10 @@ public class ClickToMove : MonoBehaviour
             if (Physics.Raycast(ray.origin, ray.direction, out hitInfo))
             {
                 agent.destination = hitInfo.point;
-                for (int i = 0; i < agent.path.corners.Length; i++)
-                {
-                    Debug.Log(agent.path.corners[i].ToString());
-                }
+                //for (int i = 0; i < agent.path.corners.Length; i++)
+                //{
+                //    Debug.Log(agent.path.corners[i].ToString());
+                //}
             }
         }
     }

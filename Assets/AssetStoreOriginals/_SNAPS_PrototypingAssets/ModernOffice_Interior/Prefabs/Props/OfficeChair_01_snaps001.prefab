@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 8246070658855881157}
   - component: {fileID: 8722008745537906982}
   - component: {fileID: 4703195107395012989}
+  - component: {fileID: 6362389721173071555}
   m_Layer: 0
   m_Name: OfficeChair_01_snaps001
   m_TagString: Untagged
@@ -18051,3 +18052,19 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
+--- !u!208 &6362389721173071555
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776277804425246}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.337, y: 0.55700004, z: 0.377}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.551, z: 0.039}
+  m_TimeToStationary: 0.5
