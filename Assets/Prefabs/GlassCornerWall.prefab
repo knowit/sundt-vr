@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 123
   m_IsActive: 1
 --- !u!4 &4933024806287465578
 Transform:
@@ -43,6 +43,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: glassWallCornerSide2
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 05fc81d6e1c139845a5442e2050a0f23,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 123
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 05fc81d6e1c139845a5442e2050a0f23,
         type: 3}
@@ -123,6 +128,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: glassWallCornerSide1
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 6c0ca12de733d114dbe61482558d7c34,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 123
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6c0ca12de733d114dbe61482558d7c34,
         type: 3}
