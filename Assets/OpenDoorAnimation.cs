@@ -5,62 +5,37 @@ using UnityEngine;
 
 public class OpenDoorAnimation : MonoBehaviour
 {
-    private Animator doorAnimationController;
+    private Animator _doorAnimationController;
 
     [SerializeField] private bool openDoorToTheLeft = false;
     [SerializeField] private bool doorIsOpen = false;
 
-    private static readonly int CloseDoorLeft = Animator.StringToHash("CloseDoorLeft");
-    private static readonly int CloseDoor = Animator.StringToHash("CloseDoor");
-    private static readonly int OpenDoorLeft = Animator.StringToHash("OpenDoorLeft");
-    private static readonly int OpenDoor = Animator.StringToHash("OpenDoor");
-    
-    // Start is called before the first frame update
+    private static readonly int IsOpen = Animator.StringToHash("IsOpen");
+    private static readonly int TurnsLeft = Animator.StringToHash("TurnsLeft");
+
     void Awake()
     {
-        doorAnimationController = GetComponent<Animator>();
+        _doorAnimationController = GetComponent<Animator>();
+        
+        _doorAnimationController.SetBool(TurnsLeft, openDoorToTheLeft);
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void StartAnimation()
     {
-        
-    }
-
-    private void startAnimation()
-    {
-        if (openDoorToTheLeft)
-        {
-            if (doorIsOpen)
-            {
-                doorAnimationController.Play(CloseDoorLeft);
-            }
-            else
-            {
-                doorAnimationController.Play(OpenDoorLeft);
-            }
-
-            //doorAnimationController.SetTrigger(AnimateDoor);
-        }
-        else
-        {
-            if (doorIsOpen)
-            {
-                doorAnimationController.Play(CloseDoor);
-            }
-            else
-            {
-                doorAnimationController.Play(OpenDoor);
-            }
-        }
-
-        
+        Debug.LogFormat($"Starting animation, doorIsOpen: {doorIsOpen}");
+        _doorAnimationController.SetBool("IsOpen", doorIsOpen);
     }
     
     private void OnTriggerEnter(Collider other)
     {
-        startAnimation();
+        Debug.LogFormat($"Triggered by {other.name}, door is open: {doorIsOpen}" );
+        if (doorIsOpen && !other.CompareTag("Player"))
+        {
+            return;
+        }
         doorIsOpen = !doorIsOpen;
+        StartAnimation();
     }
     
 }
