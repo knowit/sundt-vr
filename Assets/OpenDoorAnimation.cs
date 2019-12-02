@@ -9,7 +9,7 @@ public class OpenDoorAnimation : MonoBehaviour
 
     [SerializeField] private bool openDoorToTheLeft = false;
     [SerializeField] private bool doorIsOpen = false;
-    private bool firstTime = true;
+    private bool _firstTime = true;
     private static readonly int IsOpen = Animator.StringToHash("IsOpen");
     private static readonly int TurnsLeft = Animator.StringToHash("TurnsLeft");
     private static readonly int FirstTime = Animator.StringToHash("FirstTime");
@@ -24,24 +24,20 @@ public class OpenDoorAnimation : MonoBehaviour
 
     private void StartAnimation()
     {
-        Debug.LogFormat($"Starting animation, doorIsOpen: {doorIsOpen}");
         _doorAnimationController.SetBool(IsOpen, doorIsOpen);
-        if (firstTime)
+        if (_firstTime)
         {
             _doorAnimationController.SetBool(FirstTime, true);
-            firstTime = false;
+            _firstTime = false;
         }
     }
     
     private void OnTriggerEnter(Collider other)
     {
-        Debug.LogFormat($"Triggered by {other.name}, door is open: {doorIsOpen}" );
         if (doorIsOpen && !other.CompareTag("Player"))
         {
             return;
         }
-
-        
         doorIsOpen = !doorIsOpen;
         StartAnimation();
     }
