@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503636742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.226, z: 0.626}
+  m_LocalPosition: {x: -0.001, y: 0.112, z: 0.318}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1045535802938590895}
@@ -72,8 +72,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5568621
-  m_Center: {x: -1.00231934e-10, y: 0.080968186, z: 0.27503735}
+  m_Radius: 0.26553974
+  m_Center: {x: -6.9387424e-10, y: 0.080968164, z: 0.114081234}
 --- !u!1 &1045535802938590892
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 1895959458}
   - component: {fileID: 1895959459}
   - component: {fileID: 8877333096981593621}
+  - component: {fileID: 2048312967}
   m_Layer: 0
   m_Name: NerfGun
   m_TagString: Untagged
@@ -124,7 +125,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b5fd06e08191444af0b25bc0b5d8e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickupCollider: {fileID: 1676337536}
+  m_allowOffhandGrab: 1
+  m_snapPosition: 1
+  m_snapOrientation: 1
+  m_snapOffset: {fileID: 0}
+  m_grabPoints: []
+  pickupCollider: {fileID: 1676337536}
 --- !u!54 &7475270693363911359
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -151,10 +157,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.14023125
-  m_Height: 0.72421724
+  m_Radius: 0.062548175
+  m_Height: 0.3464094
   m_Direction: 2
-  m_Center: {x: 0.00042778192, y: 0.14112936, z: 0.27652693}
+  m_Center: {x: 0.0006485731, y: 0.080353156, z: 0.13847639}
 --- !u!136 &1895959459
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -165,10 +171,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.08960968
-  m_Height: 0.37034562
+  m_Radius: 0.037031062
+  m_Height: 0.25334737
   m_Direction: 1
-  m_Center: {x: 0.0024111718, y: -0.03455321, z: -0.016269816}
+  m_Center: {x: 0.006190926, y: 0.023945909, z: 0.01221102}
 --- !u!114 &8877333096981593621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +192,21 @@ MonoBehaviour:
   spawnOverride: {fileID: 503636743}
   fireSpeed: 0.2
   fireButton: 0
+--- !u!114 &2048312967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045535802938590892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aab4c587457d86f4ca80582f946785ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowPointing: 1
+  m_allowThumbsUp: 0
+  m_poseId: 1
 --- !u!1001 &1045535801350675809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -252,6 +273,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: ec5fb075ffacaac42acf4dd0e25c951c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: ec5fb075ffacaac42acf4dd0e25c951c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: ec5fb075ffacaac42acf4dd0e25c951c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec5fb075ffacaac42acf4dd0e25c951c, type: 3}

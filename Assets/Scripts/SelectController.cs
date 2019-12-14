@@ -5,21 +5,23 @@ using UnityEngine;
 
 public class SelectController : MonoBehaviour
 {
+    public bool useFpsControllerInEditor = true;
+
     [SerializeField] private GameObject ovrPlayerController;
     [SerializeField] private GameObject fpsController;
     
     private void Awake()
     {
-        if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
-        {
-            ovrPlayerController.SetActive(false);
-            fpsController.SetActive(true);
-        }
-        else
-        {
-            ovrPlayerController.SetActive(true);
-            fpsController.SetActive(false);
-        }
+        if (!useFpsControllerInEditor)
+            return;
+
+#if UNITY_EDITOR
+        ovrPlayerController.SetActive(false);
+        fpsController.SetActive(true);
+#else
+        ovrPlayerController.SetActive(true);
+        fpsController.SetActive(false);
+#endif
     }
 
 }
