@@ -5,10 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Sundt_pb.unity
-    guid: 7b8fdca1671327d498fbaa33d0fe7ed4
   - enabled: 1
-    path: Assets/Scenes/Sundt.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/Sundt3.unity
+    guid: 21571294e26316c4ba9013b92e725d3f
   m_configObjects: {}
