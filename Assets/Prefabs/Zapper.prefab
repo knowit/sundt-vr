@@ -159,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_allowPointing: 1
   m_allowThumbsUp: 0
-  m_poseId: 3
+  m_poseId: 1
 --- !u!1 &4200256463384268817
 GameObject:
   m_ObjectHideFlags: 0

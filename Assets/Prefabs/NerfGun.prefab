@@ -206,7 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_allowPointing: 1
   m_allowThumbsUp: 0
-  m_poseId: 3
+  m_poseId: 1
 --- !u!1001 &1045535801350675809
 PrefabInstance:
   m_ObjectHideFlags: 0
