@@ -1,96 +1,124 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Diagnostics;
+using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.Experimental.PlayerLoop;
+using Debug = UnityEngine.Debug;
 
 public class EscortPlayer : MonoBehaviour
 {
-    [SerializeField] private GameObject head;
-    //should make it faster to find the player instead of checking by tag
-    [SerializeField] private GameObject player;
-    [SerializeField] private float maxDistanceToTarget = 1.0f;
-    private Vector3 lastPosition;
-    private Vector3 currentTarget;
-    private bool _isEscorting = false;
     [SerializeField] private GameObject[] targets;
-    private int _targetIndex;
+    [SerializeField] private Transform player;
+    [SerializeField] private float maxPlayerDistance = 5.0f;
+    private int _targetIndex = 0;
+    private NavMeshAgent _nma;
+    private NavMeshPath _path;
+    private float prevDistance = 0;
+    
+    
     private void Awake()
     {
-        lastPosition = this.transform.position;
-        if (player is null)
-        {
-            GameObject[] temp;
-            temp = GameObject.FindGameObjectsWithTag("Player");
-            if (temp is null)
-            {
-                Debug.LogErrorFormat("There is no game object with the \"Player\" Tag, EscortPlayer script will not work!");
-                return;
-            }
-
-            if (temp.Length <= 2)
-            {
-                //We are always using the first player tagged object we find, even if more are present.
-                //The VR rig has 2 and the FPSController has 1. Luckily the FindGameObjectsWithTag only searches active objects.
-                player = temp[0];
-            }
-            else
-            {
-                Debug.LogWarningFormat($"Found {temp.Length} player tagged objects, expected 1 or 2. Attempting to use first object found");
-            }
-        }
+        _path = new NavMeshPath();
+        
+        _nma = GetComponent<NavMeshAgent>();
+        _nma.SetDestination(targets[_targetIndex].transform.position);
+        player = GameObject.FindWithTag("Player").transform;
     }
     
-    
-    private bool FindPlayer()
+    private IEnumerator FindNewTarget()
     {
-        //Should we do this correctly and do raycasting from Head object to see if we can see the player.
-        //Or simply use the player as long as we haven't finished escorting the player to the correct room?
-        return false;
+        _nma.isStopped = true;
+        _targetIndex = (_targetIndex + 1) % targets.Length;    
+        bool possible = _nma.CalculatePath(targets[_targetIndex].transform.position, _path);
+   
+        if (!possible)
+        {
+            Debug.LogError($"Impossible to reach index {_targetIndex}, name: {targets[_targetIndex].name}");
+        }
+        yield return new WaitForSeconds(2);
+        
+        _nma.SetPath(_path);
+        _nma.isStopped = false;
     }
     
-    //This needs to be refactored! But KISS for prototyping..
+    
     private void Update()
     {
-        float dist;
-        //if not escorting player, then find it
-        if (!_isEscorting)
+        //note, does not handle player moving towards target room faster than agent if exceeding speedup ratio
+       
+        //possible states
+        var targetDistance = Vector3.Distance(transform.position, targets[_targetIndex].transform.position);
+        if ( Math.Abs(targetDistance) < 0.5f)
         {
-            if (!FindPlayer())
-            {
-                //player not found, continuing to target.
-                //This is probably an edge case not needed for our initial solution,
-                //since we want the avatar to escort the player to the final destination.
-                //but leaving it in for now.
-                dist = Vector3.Distance(this.transform.position, currentTarget);
-                if (dist < maxDistanceToTarget)
-                {
-                    _targetIndex = _targetIndex + 1 % targets.Length;
-                    currentTarget = targets[_targetIndex].transform.position;
-                }
-            }
-            else
-            {
-                //player found, lets set last position to player and escort to the target meeting room.
-                _isEscorting = true;
-                lastPosition = player.transform.position;
-            }
+            Debug.LogError($"We have arrived at our destination, {targets[_targetIndex].name}, distance {targetDistance} ");
+            //we have arrived
+            //arrived at target room, should we disable this script? Will need to ensure we aren't blocking the entry to the room.
+            _nma.isStopped = true;
+            return;
         }
         
-        //Need to ensure we are moving towards player, should the distance be too large.
-        //if escorting, but player is too far away, move towards last known position.
-        dist = Vector3.Distance(this.transform.position, lastPosition);
-        if (dist > maxDistanceToTarget)
+        var currDistance = Vector3.Distance(transform.position, player.transform.position);
+        Debug.Log($"{currDistance} from player tagged object");
+        if (currDistance <= maxPlayerDistance)
         {
-            //move towards last known position;
-            currentTarget = lastPosition;
+            //ensure that we are moving, since player is within max distance
+            _nma.isStopped = false; 
+                
+            //moving towards room, player following
+            var diff = prevDistance - currDistance;
+            //change speed to match player
+            _nma.speed += diff*0.1f;
+            
         }
         else
         {
-            //if escorting, and player is close enough, continue towards target
-            currentTarget = targets[_targetIndex].transform.position;
+            //player outside range, check if visible
+            RaycastHit hit = new RaycastHit();
+            var avatarPosition = gameObject.transform.position + Vector3.up;
+            var canSeePlayer = Physics.Raycast(avatarPosition, (player.transform.position+Vector3.up) - avatarPosition, out hit);
+            if (canSeePlayer)
+            {
+                //will wait a bit to see if player follows
+                _nma.isStopped = true;
+                //can play optional sound bite here
+            }
+            else
+            {
+                Debug.LogWarning($"Can't see the player, setting it as new target");
+                //player has moved away, lets set the player as new target
+                _nma.SetDestination(player.transform.position);
+            }
+
+        }
+
+        prevDistance = currDistance;
+        //moving towards room, player stopped follow
+            //player stopped following
+            //player is visible, if within certain range, wait. play sound. 
+            //player is visible, outside given range, move towards player
+            //player is not visible, set current player position as new destination, move there as long as player is not moving more than x from that position
+            //player is not visible, but moves outside certain range from current target, set current destination as new target
+            //
+
+            if (!_nma.hasPath && !_nma.isStopped)
+            {
+                //StartCoroutine(FindNewTarget());
+
+                //if we have arrived at actual destination, disable script.
+                //else we have arrived at player, set the original destination.
+                Debug.LogError("We don't have a a path, but are stopped, disabling script!");
+                var tempy = gameObject.GetComponent<EscortPlayer>();
+                tempy.enabled = false;
+            }
+
+            //ray cast towards player.
+            //slow down if distance to player is increasing.
+
+            //speed up to normal speed if players is closing
+
+            //if not seen, change path to find player, 
         }
         
-        
-        
-        
-    }
 
-    
-}
+    }

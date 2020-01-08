@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7047203088247862832}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f72d8176961f0f4da557e5a63527c39, type: 3}
+  m_Script: {fileID: 11500000, guid: 040e35a356b224d4eb61466333722fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   openDoorToTheLeft: 0
@@ -69,10 +69,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3447213942029768760, guid: 75d34c990ac545d4b93ba8d7fb021a8c,
+    - target: {fileID: 2920884261671754809, guid: 75d34c990ac545d4b93ba8d7fb021a8c,
         type: 3}
-      propertyPath: m_Name
-      value: SmallDoor
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949925333518333783, guid: 75d34c990ac545d4b93ba8d7fb021a8c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949925333518333783, guid: 75d34c990ac545d4b93ba8d7fb021a8c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949925333518333783, guid: 75d34c990ac545d4b93ba8d7fb021a8c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949925333518333783, guid: 75d34c990ac545d4b93ba8d7fb021a8c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949925333518333783, guid: 75d34c990ac545d4b93ba8d7fb021a8c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 3203500775911612400, guid: 75d34c990ac545d4b93ba8d7fb021a8c,
         type: 3}
@@ -129,12 +154,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5255442574337935827, guid: 75d34c990ac545d4b93ba8d7fb021a8c,
+    - target: {fileID: 3447213942029768760, guid: 75d34c990ac545d4b93ba8d7fb021a8c,
+        type: 3}
+      propertyPath: m_Name
+      value: SmallDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223517216545180869, guid: 75d34c990ac545d4b93ba8d7fb021a8c,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 5223517216545180869, guid: 75d34c990ac545d4b93ba8d7fb021a8c,
+    - target: {fileID: 5255442574337935827, guid: 75d34c990ac545d4b93ba8d7fb021a8c,
         type: 3}
       propertyPath: m_Mesh
       value: 
@@ -27963,36 +27993,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Tangents.Array.data[245].z
       value: 0.035453193
-      objectReference: {fileID: 0}
-    - target: {fileID: 2949925333518333783, guid: 75d34c990ac545d4b93ba8d7fb021a8c,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2949925333518333783, guid: 75d34c990ac545d4b93ba8d7fb021a8c,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2949925333518333783, guid: 75d34c990ac545d4b93ba8d7fb021a8c,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2949925333518333783, guid: 75d34c990ac545d4b93ba8d7fb021a8c,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2949925333518333783, guid: 75d34c990ac545d4b93ba8d7fb021a8c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2920884261671754809, guid: 75d34c990ac545d4b93ba8d7fb021a8c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75d34c990ac545d4b93ba8d7fb021a8c, type: 3}
