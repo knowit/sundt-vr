@@ -3,7 +3,7 @@ using System.Collections;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Experimental.PlayerLoop;
+using UnityEngine.LowLevel.PlayerLoop;
 using Debug = UnityEngine.Debug;
 
 public class EscortPlayer : MonoBehaviour
