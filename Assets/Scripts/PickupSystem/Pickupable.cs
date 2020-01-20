@@ -60,6 +60,7 @@ public class Pickupable : OVRGrabbable
         BroadcastMessage("Pickup", SendMessageOptions.DontRequireReceiver);
     }
 
+
     public void OnDrop()
     {
         if (TryGetComponent<Rigidbody>(out var rigidbody))

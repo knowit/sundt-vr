@@ -3,7 +3,6 @@ using System.Collections;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.LowLevel.PlayerLoop;
 using Debug = UnityEngine.Debug;
 
 public class EscortPlayer : MonoBehaviour
@@ -17,15 +16,19 @@ public class EscortPlayer : MonoBehaviour
     private float prevDistance = 0;
 
     private bool goToPlayer = true;
+
+    private Animator _anim;
     
     private void Awake()
     {
         _path = new NavMeshPath();
         
         _nma = GetComponent<NavMeshAgent>();
+        _anim = GetComponent<Animator>();
         player = GameObject.FindWithTag("Player").transform;
     }
     
+
     
     
     private IEnumerator FindNewTarget()
@@ -42,11 +45,13 @@ public class EscortPlayer : MonoBehaviour
         
         _nma.SetPath(_path);
         _nma.isStopped = false;
+        _anim.SetBool("Walk_Anim", true);
     }
 
 
     private void Update()
     {
+        
         //note, does not handle player moving towards target room faster than agent if exceeding speedup ratio
         if (!goToPlayer)
         {
@@ -59,6 +64,7 @@ public class EscortPlayer : MonoBehaviour
                 //we have arrived
                 //arrived at target room, should we disable this script? Will need to ensure we aren't blocking the entry to the room.
                 _nma.isStopped = true;
+                _anim.SetBool("Walk_Anim", false);
                 return;
             }
 
@@ -68,7 +74,7 @@ public class EscortPlayer : MonoBehaviour
             {
                 //ensure that we are moving, since player is within max distance
                 _nma.isStopped = false;
-
+                _anim.SetBool("Walk_Anim", true);
                 //moving towards room, player following
                 var diff = prevDistance - currDistance;
                 //change speed to match player
@@ -86,6 +92,7 @@ public class EscortPlayer : MonoBehaviour
                 {
                     //will wait a bit to see if player follows
                     _nma.isStopped = true;
+                    _anim.SetBool("Walk_Anim", false);
                     //can play optional sound bite here
                 }
                 else
@@ -113,6 +120,7 @@ public class EscortPlayer : MonoBehaviour
                 //if we have arrived at actual destination, disable script.
                 //else we have arrived at player, set the original destination.
                 Debug.LogError("We don't have a a path, but are stopped, disabling script!");
+                _anim.SetBool("Walk_Anim", false);
                 var tempy = gameObject.GetComponent<EscortPlayer>();
                 tempy.enabled = false;
             }
@@ -139,5 +147,6 @@ public class EscortPlayer : MonoBehaviour
         nearPlayerTarget.y = transform.position.y;
         _nma.SetDestination(nearPlayerTarget);
         goToPlayer = true;
+        _anim.SetBool("Walk_Anim", true);
     }
 }

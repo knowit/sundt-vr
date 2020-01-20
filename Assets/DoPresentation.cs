@@ -11,6 +11,7 @@ public class DoPresentation : MonoBehaviour
     [SerializeField] private VideoPlayer presentation;
     
     
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag.Equals("Player"))
@@ -27,4 +28,11 @@ public class DoPresentation : MonoBehaviour
         }
     }
 
+    
+
+    private void OnDestroy()
+    {
+        Debug.LogError($"Destroying presentation");   
+        presentation.targetTexture.DiscardContents(true, true);
+    }
 }
